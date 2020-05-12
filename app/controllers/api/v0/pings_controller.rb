@@ -3,7 +3,6 @@
 class Api
   class V0
     class PingsController < ApplicationController
-      # Controller for testing that requests have responses
       def index
         render json: { message: 'Pong' }
       end
