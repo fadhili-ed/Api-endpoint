@@ -2,7 +2,7 @@
 
 # rubocop:todo Style/Documentation
 class DeviseCreateUsers < ActiveRecord::Migration[6.0]
-  def change # rubocop:todo Metrics/MethodLength
+  def change
     create_table :users do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ''
