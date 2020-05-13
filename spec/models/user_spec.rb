@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe User, type: :model do # rubocop:todo Metrics/BlockLength
   it 'should have valid Factory' do
     expect(create(:user)).to be_valid
   end

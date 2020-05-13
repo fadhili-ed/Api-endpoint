@@ -2,6 +2,7 @@
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -16,7 +17,9 @@ Rails.application.configure do
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
+  # rubocop:todo Rails/FilePath
   if Rails.root.join('tmp', 'caching-dev.txt').exist?
+    # rubocop:enable Rails/FilePath
     config.cache_store = :memory_store
     config.public_file_server.headers = {
       'Cache-Control' => "public, max-age=#{2.days.to_i}"
