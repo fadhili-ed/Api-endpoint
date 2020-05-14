@@ -2,7 +2,8 @@
 
 require 'rails_helper'
 
-RSpec.describe User, type: :model do # rubocop:todo Metrics/BlockLength
+RSpec.describe User, type: :model do
+  # rubocop:todo Metrics/BlockLength
   it 'should have valid Factory' do
     expect(create(:user)).to be_valid
   end
@@ -36,8 +37,14 @@ RSpec.describe User, type: :model do # rubocop:todo Metrics/BlockLength
     it { is_expected.to validate_confirmation_of(:password) }
 
     context 'should not have an invalid email address' do
-      emails = ['asdf@ ds.com', '@example.com', 'test me @yahoo.com',
-                'asdf@example', 'ddd@.d. .d', 'ddd@.d']
+      emails = [
+        'asdf@ ds.com',
+        '@example.com',
+        'test me @yahoo.com',
+        'asdf@example',
+        'ddd@.d. .d',
+        'ddd@.d'
+      ]
 
       emails.each do |email|
         it { is_expected.not_to allow_value(email).for(:email) }
@@ -45,8 +52,12 @@ RSpec.describe User, type: :model do # rubocop:todo Metrics/BlockLength
     end
 
     context 'should have a valid email address' do
-      emails = ['asdf@ds.com', 'hello@example.uk', 'test1234@yahoo.si',
-                'asdf@example.eu']
+      emails = %w[
+        asdf@ds.com
+        hello@example.uk
+        test1234@yahoo.si
+        asdf@example.eu
+      ]
 
       emails.each do |email|
         it { is_expected.to allow_value(email).for(:email) }
