@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   # rubocop:todo Metrics/BlockLength
   it 'should have valid Factory' do
-    expect(create(:user)).to be_valid
+    expect(FactoryBot.create(:user)).to be_valid
   end
   describe 'User table' do
     it { is_expected.to have_db_column :id }
