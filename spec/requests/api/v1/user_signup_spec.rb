@@ -1,5 +1,33 @@
 # frozen_string_literal: true
 
+require 'rails_helper'
+require 'swagger_helper'
+
+describe 'User' do
+
+  path '/api/v0/auth' do
+
+    post 'user registration/Sign up' do
+      tags 'Users'
+      consumes 'application/json'
+      parameter name: :user, in: :body, schema: {
+        type: :object,
+        properties: {
+          email: { type: :string },
+          password: { type: :string },
+          password_confirmation: { type: :string },
+        },
+        required: [ 'email', 'password', 'password_confirmation' ]
+      }
+
+      response '200', 'success' do
+        let(:user) { { email: 'user@example.com', password: 'User@123.', password_confirmation: 'User@123.'  } }
+        run_test!
+      end
+    end
+  end
+end
+
 RSpec.describe 'Users Registration', type: :request do
   let(:header) { { HTTP_ACCEPT: 'application/json' } }
   context 'with valid credentials' do
